@@ -1,0 +1,18 @@
+<div class="ui container reports-container">
+    <div class="twelve wide column">
+        <div class="ui top attached tabular menu">
+            <a class="item" [ngClass]="{'active':currentTab==='tab1'}" (click)="currentTab='tab1'">
+                Student Lists
+            </a>
+            <a class="item" [ngClass]="{'active':currentTab==='tab2'}" (click)="currentTab='tab2'">
+                Results
+            </a>
+        </div>
+        <div class="ui bottom attached segment" *ngIf="currentTab==='tab1'">
+            Tab 1
+        </div>
+        <div class="ui bottom attached segment" *ngIf="currentTab==='tab2'">
+            Tab 2
+        </div>
+    </div>
+</div>
