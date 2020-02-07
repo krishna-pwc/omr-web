@@ -1,5 +1,5 @@
-<div class="ui container reports-container">
-    <div class="twelve wide column">
+<div class="reports-container">
+    <div class="twelve wide column" *ngIf="!displaySegment">
         <div class="ui top attached tabular menu">
             <a class="item" [ngClass]="{'active':currentTab==='tab1'}" (click)="currentTab='tab1'">
                 Student Lists
@@ -9,10 +9,131 @@
             </a>
         </div>
         <div class="ui bottom attached segment" *ngIf="currentTab==='tab1'">
-            Tab 1
+            <p-table [columns]="studentTableColumns" [value]="studentList?.data">
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns">
+                            {{col.header}}
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                    <tr>
+                        <td *ngFor="let col of columns" [ngClass]="{'text-center':col.header !== 'Name'}">
+                            {{rowData?.student[col.field]}}
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
         </div>
         <div class="ui bottom attached segment" *ngIf="currentTab==='tab2'">
-            Tab 2
+            <div class="twelve wide column mb-20">
+                <div class="ui grid exam-details m-0">
+                    <div class="four wide column">
+                        <span class="mr-15"><b>Exam Id</b></span>
+                        <span class="mr-20">{{studentList?.examdata?.examid}}</span>
+                    </div>
+                    <div class="four wide column">
+                        <span class="mr-15"><b>Title</b></span>
+                        <span class="mr-20">{{studentList?.examdata?.title}}</span>
+                    </div>
+                    <div class="four wide column">
+                        <span class="mr-15"><b>Total Marks</b></span>
+                        <span class="mr-20">{{studentList?.examdata?.totalmarks}}</span>
+                    </div>
+                    <div class="four wide column">
+                        <span class="mr-15"><b>Passing Marks</b></span>
+                        <span class="mr-20">{{studentList?.examdata?.passingmarks}}</span>
+                    </div>
+                    <div class="four wide column">
+                        <span class="mr-15"><b>Students Planned</b></span>
+                        <span class="mr-20">{{studentList?.examdata?.noofstudentsplanned}}</span>
+                    </div>
+                    <div class="four wide column">
+                        <span class="mr-15"><b>Students Appeared</b></span>
+                        <span class="mr-20">{{studentList?.examdata?.noofstudentappeared}}</span>
+                    </div>
+                    <div class="four wide column">
+                        <span class="mr-15"><b>Date of Exam</b></span>
+                        <span class="mr-20">{{studentList?.examdata?.dateofexam}}</span>
+                    </div>
+                </div>
+            </div>
+            <p-table [columns]="resultTableColumns" [value]="studentList?.data">
+                <ng-template pTemplate="header" let-columns let-index>
+                    <tr>
+                        <th *ngFor="let col of columns">
+                            {{col.header}}
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
+                    <tr>
+                        <td *ngFor="let col of columns" [ngClass]="{'text-center':col.header !== 'Name'}">
+                            <span *ngIf="col.header==='Name'">{{rowData?.student[col.field]}}</span>
+                            <span *ngIf="col.header==='RollNo'">{{rowData?.student[col.field]}}</span>
+                            <span *ngIf="col.field==='totalmarksinpercentage'">{{rowData?.marks[col.field]}}%</span>
+                            <span
+                                *ngIf="col.header!=='Result' && col.header!=='Option' && col.field!=='totalmarksinpercentage'">{{rowData?.marks[col.field]}}</span>
+                            <a class="ui mini label" *ngIf="col.header==='Result'"
+                                [ngClass]="rowData?.marks[col.field] === 'Fail' ? 'red':'green'">{{rowData?.marks[col.field]}}</a>
+                            <button *ngIf="col.header==='Option'" class="mini ui blue button"
+                                (click)="showSegment(rowIndex)"><i class="chart pie icon"></i>View</button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+    <div class="twelve wide column" *ngIf="displaySegment">
+        <div class="ui grid exam-details m-0">
+            <div class="eleven wide column">
+                <h5>Test Reports of {{selectedStudent}}</h5>
+            </div>
+            <div class="one wide column back-button">
+                <button class="mini ui default button" (click)="displaySegment=false">Back</button>
+            </div>
+        </div>
+        <div class="twelve wide column mt-20 mb-20">
+            <p-table [columns]="segmentTableColumns" [value]="currentSegment?.segments">
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns">
+                            {{col.header}}
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                    <tr>
+                        <td *ngFor="let col of columns" [ngClass]="{'text-center':col.header !== 'Name'}">
+                            <span
+                                *ngIf="col.header!=='Result' && col.field !=='passingmarks' && col.field !=='marksobtainedpercentage'">{{rowData[col.field]}}</span>
+                            <span
+                                *ngIf="col.field ==='passingmarks' || col.field ==='marksobtainedpercentage'">{{rowData[col.field]}}%</span>
+                            <a class="ui mini label" *ngIf="col.header==='Result'"
+                                [ngClass]="rowData[col.field] === 'Fail' ? 'red':'green'">{{rowData[col.field]}}</a>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+        <div class="ui grid">
+            <div class="eight wide column">
+                <h4>Question Summary</h4>
+            </div>
+            <div class="eight wide column mb-30">
+                <h4>Section Wise Percentage</h4>
+                <ng-container *ngFor="let segment of currentSegment?.segments">
+                    <div class="label">{{segment?.name}}</div>
+                    <sui-progress class="blue mb-15" [value]="segment?.marksobtainedpercentage" [showProgress]="true"
+                        [maximum]="100" [precision]="0">
+                    </sui-progress>
+                </ng-container>
+                <div class="label mb-15">Total Percentage Obtained</div>
+                <sui-progress class="blue mb-15" [value]="currentSegment?.marks?.totalmarksinpercentage"
+                    [showProgress]="true" [maximum]="100" [precision]="0">
+                </sui-progress>
+            </div>
         </div>
     </div>
 </div>
