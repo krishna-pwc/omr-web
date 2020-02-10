@@ -126,14 +126,14 @@
                 <h4>Section Wise Percentage</h4>
                 <ng-container *ngFor="let segment of currentSegment?.segments">
                     <div class="label">{{segment?.name}}</div>
-                    <!-- <sui-progress class="blue mb-15" [value]="segment?.marksobtainedpercentage" [showProgress]="true"
+                    <sui-progress class="blue mb-15" [value]="segment?.marksobtainedpercentage" [showProgress]="true"
                         [maximum]="100" [precision]="0">
-                    </sui-progress> -->
+                    </sui-progress>
                 </ng-container>
                 <div class="label mb-15">Total Percentage Obtained</div>
-                <!-- <sui-progress class="blue mb-15" [value]="currentSegment?.marks?.totalmarksinpercentage"
+                <sui-progress class="blue mb-15" [value]="currentSegment?.marks?.totalmarksinpercentage"
                     [showProgress]="true" [maximum]="100" [precision]="0">
-                </sui-progress> -->
+                </sui-progress>
             </div>
         </div>
     </div>

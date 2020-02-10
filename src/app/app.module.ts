@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { MenuComponentComponent } from './components/core/menu-component/menu-component.component';
 import { FooterComponentComponent } from './components/core/footer-component/footer-component.component';
 import { ReportsComponentComponent } from './components/dashboards/reports-component/reports-component.component';
-// import { SuiProgressModule } from 'ng2-semantic-ui';
+import { SuiModule } from 'ng2-semantic-ui';
 import { TableModule } from 'primeng/table';
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { TableModule } from 'primeng/table';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // SuiProgressModule,
+    SuiModule,
     HttpClientModule,
     TableModule
   ],
