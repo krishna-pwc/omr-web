@@ -33,13 +33,11 @@ export class ReportsComponentComponent implements OnInit {
       this.examList = response.data;
       if (_.isEmpty(this.selectedExam)) {
         this.selectedExam = this.examList[0];
-      } else {
         this.reportServiceService.getStudentList(this.loggedUser, _.get(this.selectedExam, 'examid')).subscribe(response => {
           this.studentList = response;
           this.initializeTables();
         });
-      }
-    });
+      });
     this.pieChartModel = [
       {
         code: "rightanswer",
