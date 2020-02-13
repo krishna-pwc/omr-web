@@ -124,82 +124,17 @@ export class ReportsComponentComponent implements OnInit {
       _.assign(parentObj, { 'percent': _.sumBy(self.segmentList.segments, parentObj.code) })
       tempObj = [];
       _.map(self.segmentList.segments, function (childObj) {
-        tempObj.push(_.assign(_.pick(childObj, 'name'), { 'percent': _.get(childObj, parentObj.code) }));
+        tempObj.push(_.assign({ 'type': _.get(childObj, 'name') }, { 'percent': _.get(childObj, parentObj.code) }));
       });
-      console.log(tempObj);
-      // chartData.push(parentObj);
+      chartData.push(_.assign(_.omit(parentObj, 'code'), { 'subs': tempObj }));
     });
     this.zone.runOutsideAngular(() => {
       let chart = am4core.create("questionSummaryChart", am4charts.PieChart);
       // Set data
       let selected;
-      // let types = [{
-      //   type: "Fossil Energy",
-      //   percent: 70,
-      //   color: chart.colors.getIndex(0),
-      //   subs: [{
-      //     type: "Oil",
-      //     percent: 15
-      //   }, {
-      //     type: "Coal",
-      //     percent: 35
-      //   }, {
-      //     type: "Nuclear",
-      //     percent: 20
-      //   }]
-      // }, {
-      //   type: "Green Energy",
-      //   percent: 30,
-      //   color: chart.colors.getIndex(1),
-      //   subs: [{
-      //     type: "Hydro",
-      //     percent: 15
-      //   }, {
-      //     type: "Wind",
-      //     percent: 10
-      //   }, {
-      //     type: "Other",
-      //     percent: 5
-      //   }]
-      // }];
-      let types = [{
-        type: "Right Answer",
-        percent: 20,
-        color: "#4caf50",
-        subs: [{
-          type: "Speed and Distance",
-          percent: 10
-        }, {
-          type: "Principal and Interest",
-          percent: 10
-        }]
-      }, {
-        type: "Wrong Answer",
-        percent: 6,
-        color: "#ef5350",
-        subs: [{
-          type: "Speed and Distance",
-          percent: 3
-        }, {
-          type: "Principal and Interest",
-          percent: 3
-        }]
-      }, {
-        type: "Not Attempted",
-        percent: 4,
-        color: "#ffca28",
-        subs: [{
-          type: "Speed and Distance",
-          percent: 2
-        }, {
-          type: "Principal and Interest",
-          percent: 2
-        }]
-      }];
-
+      let types = chartData;
       // Add data
       chart.data = generateChartData();
-
       // Add and configure Series
       let pieSeries = chart.series.push(new am4charts.PieSeries());
       pieSeries.dataFields.value = "percent";
@@ -207,7 +142,6 @@ export class ReportsComponentComponent implements OnInit {
       pieSeries.slices.template.propertyFields.fill = "color";
       pieSeries.slices.template.propertyFields.isActive = "pulled";
       pieSeries.slices.template.strokeWidth = 0;
-
       function generateChartData() {
         let chartData = [];
         for (var i = 0; i < types.length; i++) {
