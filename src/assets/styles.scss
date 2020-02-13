@@ -89,11 +89,17 @@ body {
 .text-center {
   text-align: center;
 }
+.pull-right {
+  float: right;
+}
 .mb-15 {
   margin-bottom: 15px !important;
 }
 .mb-20 {
   margin-bottom: 20px;
+}
+.mb-30 {
+  margin-bottom: 30px !important;
 }
 .mr-15 {
   margin-right: 15px;
@@ -104,8 +110,14 @@ body {
 .mt-20 {
   margin-top: 20px;
 }
+.mt-15 {
+  margin-top: 15px;
+}
 .mt-30 {
   margin-top: 30px;
+}
+.mt-40 {
+  margin-top: 40px;
 }
 .m-0 {
   margin:0 !important;

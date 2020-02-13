@@ -8,6 +8,7 @@ import { FooterComponentComponent } from './components/core/footer-component/foo
 import { ReportsComponentComponent } from './components/dashboards/reports-component/reports-component.component';
 import { SuiModule } from 'ng2-semantic-ui';
 import { TableModule } from 'primeng/table';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +18,7 @@ import { TableModule } from 'primeng/table';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     SuiModule,
     HttpClientModule,

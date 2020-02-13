@@ -1,0 +1,118 @@
+{
+  "result": {
+    "status": "Success"
+  },
+  "studentid": "101",
+  "examid": "E0001",
+  "segments": [
+    {
+      "title": "Speed and Distance",
+      "name": "Speed and Distance",
+      "rightanswer": 10,
+      "wronganswer": 3,
+      "notattempted": 2,
+      "noofquestions": 5,
+      "totalmarks": 60,
+      "passingmarks": "70",
+      "marksobtainedpercentage": "50",
+      "marksobtained": 6,
+      "outcome": "Fail",
+      "answers": [
+        {
+          "questionno": "1",
+          "answer": "A",
+          "marksobtained": 0,
+          "marksdeducted": 6,
+          "outcome": "Correct"
+        },
+        {
+          "questionno": "2",
+          "answer": "A",
+          "marksobtained": 0,
+          "marksdeducted": 6,
+          "outcome": "Not-Attempted"
+        },
+        {
+          "questionno": "3",
+          "answer": "A",
+          "marksobtained": 12,
+          "marksdeducted": 0,
+          "outcome": "Correct"
+        },
+        {
+          "questionno": "4",
+          "answer": "A",
+          "marksobtained": 12,
+          "marksdeducted": 0,
+          "outcome": "Wrong"
+        },
+        {
+          "questionno": "5",
+          "answer": "D",
+          "marksobtained": 0,
+          "marksdeducted": 12,
+          "outcome": "Correct"
+        }
+      ]
+    },
+    {
+      "title": "Principal and Interest",
+      "name": "Principal and Interest",
+      "rightanswer": 10,
+      "wronganswer": 3,
+      "notattempted": 2,
+      "noofquestions": 5,
+      "totalmarks": 40,
+      "passingmarks": "70",
+      "marksobtainedpercentage": "40",
+      "marksobtained": 40,
+      "outcome": "Pass",
+      "answers": [
+        {
+          "questionno": "1",
+          "answer": "B",
+          "marksobtained": 8,
+          "marksdeducted": 0,
+          "outcome": "Correct"
+        },
+        {
+          "questionno": "2",
+          "answer": "A",
+          "marksobtained": 7,
+          "marksdeducted": 1,
+          "outcome": "Correct"
+        },
+        {
+          "questionno": "3",
+          "answer": "C",
+          "marksobtained": 5,
+          "marksdeducted": 3,
+          "outcome": "Correct"
+        },
+        {
+          "questionno": "4",
+          "answer": "D",
+          "marksobtained": 2,
+          "marksdeducted": 6,
+          "outcome": "Correct"
+        },
+        {
+          "questionno": "5",
+          "answer": "B",
+          "marksobtained": 8,
+          "marksdeducted": 0,
+          "outcome": "Wrong"
+        }
+      ]
+    }
+  ],
+  "params": {
+    "msgid": "string",
+    "resmsgid": "string",
+    "err": null,
+    "err_msg": null,
+    "err_detail": null,
+    "status": "success"
+  },
+  "responseCode": "string"
+}

@@ -1,0 +1,53 @@
+{
+  "result": {
+    "status": "Success"
+  },
+  "examdata": {
+    "examid": "E0001",
+    "title": "Surprise Test",
+    "noofstudentsplanned": 10,
+    "noofstudentappeared": 5,
+    "totalmarks": 100,
+    "passingmarks": "70",
+    "dateofexam": "2020-02-05"
+  },
+  "studentdata": [
+    {
+      "name": "Badrinath",
+      "class": "7",
+      "section": "A",
+      "schoolcode": "S001",
+      "rollno": "R0001",
+      "studentid": "101",
+      "totalmarks": 60,
+      "totalmarksinpercentage": "60",
+      "rightanswer": 10,
+      "wronganswer": 3,
+      "notattempted": 2,
+      "outcome": "Fail"
+    },
+    {
+      "name": "Michael",
+      "class": "7",
+      "section": "A",
+      "schoolcode": "S001",
+      "rollno": "R0002",
+      "studentid": "101",
+      "totalmarks": 75,
+      "totalmarksinpercentage": "75",
+      "rightanswer": 7,
+      "wronganswer": 5,
+      "notattempted": 3,
+      "outcome": "Pass"
+    }
+  ],
+  "params": {
+    "msgid": "string",
+    "resmsgid": "string",
+    "err": null,
+    "err_msg": null,
+    "err_detail": null,
+    "status": "success"
+  },
+  "responseCode": "string"
+}

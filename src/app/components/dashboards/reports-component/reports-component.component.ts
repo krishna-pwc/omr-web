@@ -13,35 +13,47 @@ am4core.useTheme(am4themes_animated);
 export class ReportsComponentComponent implements OnInit {
   private chart: am4charts.XYChart;
   currentTab: string = 'tab1';
+  loggedUser: string = 'admin';
+  examList: any;
   studentList: any;
-  currentSegment: any;
+  segmentList: any;
   displaySegment: boolean = false;
-  studentTableColumns: any[];
-  resultTableColumns: any[];
-  segmentTableColumns: any[];
-  selectedStudent: string;
+  studentTableColumns: { field: string; header: string; }[];
+  resultTableColumns: { field: string; header: string; }[];
+  segmentTableColumns: { field: string; header: string; }[];
+  answerTableColumns: { field: string; header: string; }[];
+  selectedStudent: object;
   pieChartModel: any;
+  selectedSegment: object;
+  selectedExam: any;
+  displayAnswer: boolean = false;
   constructor(private reportServiceService: ReportServiceService, private zone: NgZone) { }
   ngOnInit() {
-    this.reportServiceService.getJSON().subscribe(response => {
-      this.studentList = response;
-      this.currentSegment = this.studentList.data[0];
-      this.initializeTables();
+    this.reportServiceService.getExamList('admin').subscribe(response => {
+      this.examList = response.data;
+      if (_.isEmpty(this.selectedExam)) {
+        this.selectedExam = this.examList[0];
+      } else {
+        this.reportServiceService.getStudentList(this.loggedUser, _.get(this.selectedExam, 'examid')).subscribe(response => {
+          this.studentList = response;
+          this.initializeTables();
+        });
+      }
     });
     this.pieChartModel = [
       {
         code: "rightanswer",
-        title: "Right Answer",
+        type: "Right Answer",
         color: "#4caf50"
       },
       {
         code: "wronganswer",
-        title: "Wrong Answer",
+        type: "Wrong Answer",
         color: "#ef5350"
       },
       {
         code: "notattempted",
-        title: "Not Attempted",
+        type: "Not Attempted",
         color: "#ffca28"
       }
     ]
@@ -57,11 +69,11 @@ export class ReportsComponentComponent implements OnInit {
     this.resultTableColumns = [
       { field: 'rollno', header: 'RollNo' },
       { field: 'name', header: 'Name' },
-      { field: 'totalmarksinpercentage', header: 'Scored (%)' },
+      { field: 'marksobtainedinpercentage', header: 'Scored (%)' },
       { field: 'rightanswer', header: 'Right Answer' },
       { field: 'wronganswer', header: 'Wrong Answer' },
       { field: 'notattempted', header: 'Not Attempted' },
-      { field: 'totalmarks', header: 'Total Marks' },
+      { field: 'marksobtained', header: 'Total Marks' },
       { field: 'outcome', header: 'Result' },
       { field: '', header: 'Option' }
     ]
@@ -72,26 +84,52 @@ export class ReportsComponentComponent implements OnInit {
       { field: 'wronganswer', header: 'Wrong Answer' },
       { field: 'notattempted', header: 'Not Attempted' },
       { field: 'totalmarks', header: 'Outof' },
-      { field: 'passingmarks', header: 'Passing Mark (%)' },
-      { field: 'marksobtainedpercentage', header: 'Scroed (%)' },
       { field: 'marksobtained', header: 'Total Marks' },
+      { field: 'passingmarks', header: 'Passing Mark (%)' },
+      { field: 'marksobtainedpercentage', header: 'Scored (%)' },
+      { field: 'outcome', header: 'Result' },
+      { field: '', header: 'Option' }
+    ]
+    this.answerTableColumns = [
+      { field: 'questionno', header: 'Question No' },
+      { field: 'answer', header: 'Answer' },
+      { field: 'marksobtained', header: 'Marks Obtained' },
+      { field: 'marksdeducted', header: 'Marks Deducted' },
       { field: 'outcome', header: 'Result' }
     ]
   }
-  showSegment(rowIndex) {
-    this.currentSegment = this.studentList.data[rowIndex];
-    this.selectedStudent = _.get(this.currentSegment, 'student.name');
-    this.displaySegment = true;
+  showSegment(selectedStudent) {
+    this.selectedStudent = selectedStudent;
+    this.reportServiceService.getSegmentList(this.loggedUser, _.get(this.selectedExam, 'examid'), _.get(this.selectedStudent, 'studentid')).subscribe(response => {
+      this.segmentList = response;
+      this.displaySegment = true;
+      this.buildPieChartData();
+    });
+  }
+  showAnswer(type, rowIndex) {
+    this.selectedSegment = type === 'single' ? [this.segmentList.segments[rowIndex]] : this.segmentList.segments;
+    this.displayAnswer = true;
+    this.displaySegment = false;
+  }
+  buildPieChartData() {
     let self = this;
-    this.buildPieChartData();
     setTimeout(function () {
       self.showChart();
     }, 1);
   }
-  buildPieChartData() {
-
-  }
   showChart() {
+    let chartData = [];
+    let self = this;
+    let tempObj = [];
+    _.map(this.pieChartModel, function (parentObj) {
+      _.assign(parentObj, { 'percent': _.sumBy(self.segmentList.segments, parentObj.code) })
+      tempObj = [];
+      _.map(self.segmentList.segments, function (childObj) {
+        tempObj.push(_.assign(_.pick(childObj, 'name'), { 'percent': _.get(childObj, parentObj.code) }));
+      });
+      console.log(tempObj);
+      // chartData.push(parentObj);
+    });
     this.zone.runOutsideAngular(() => {
       let chart = am4core.create("questionSummaryChart", am4charts.PieChart);
       // Set data
