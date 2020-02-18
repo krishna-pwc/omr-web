@@ -565,7 +565,7 @@ export class DevconReportsComponent implements OnInit, AfterViewInit {
           selectSlice(pieSeries.dataItems.getIndex(0));
         }, 1000);
       });
-    }, 1);
+    }, 1000);
   }
   getStateWiseData() {
     this.reportService.getJSON('./assets/json/devcon/state.json').subscribe(response => {
