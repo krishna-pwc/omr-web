@@ -1,0 +1,21 @@
+{
+        "result": {
+                "status": "Success"
+        },
+        "distdata": {
+                "examid": "E0001",
+                "distid": "DS001",
+                "distname": "Bengaluru",
+                "studentappeared": 230,
+                "studentcleared": 154,
+                "studentfailed": 76,
+                "studentclearedperc": "66.9%",
+                "studentfailedperc": "33.1%",
+                "firstdiv": 85,
+                "firstdivperc": "55.2%",
+                "seconddiv": 45,
+                "seconddivperc": "29.2%",
+                "thirddiv": 24,
+                "thirddivperc": "15.6%"
+        }
+}

@@ -1,0 +1,45 @@
+{
+  "result": {
+    "status": "Success"
+  },
+  "distdata": {
+    "examid": "E0001",
+    "distid": "DS001",
+    "distname": "Bengaluru"
+  },
+  "schooldata": [
+    {
+      "schoolid": "SC001",
+      "schoolname": "Frank Anthony",
+      "studentappeared": 70,
+      "studentcleared": 42,
+      "studentfailed": 28,
+      "studentclearedperc": 60,
+      "firstdiv": 20,
+      "seconddiv": 10,
+      "thirddiv": 12
+    },
+    {
+      "schoolid": "SC002",
+      "schoolname": "Kendriya Vidyalaya",
+      "studentappeared": 100,
+      "studentcleared": 82,
+      "studentfailed": 18,
+      "studentclearedperc": 82,
+      "firstdiv": 60,
+      "seconddiv": 15,
+      "thirddiv": 7
+    },
+    {
+      "schoolid": "SC003",
+      "schoolname": "National public school",
+      "studentappeared": 60,
+      "studentcleared": 30,
+      "studentfailed": 30,
+      "studentclearedperc": 50,
+      "firstdiv": 5,
+      "seconddiv": 20,
+      "thirddiv": 5
+    }
+  ]
+}

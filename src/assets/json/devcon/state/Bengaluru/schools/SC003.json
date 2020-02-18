@@ -1,0 +1,38 @@
+{
+  "result": {
+    "status": "Success"
+  },
+  "schooldata": {
+    "examid": "E0001",
+    "schoolid": "SC003",
+    "schoolname": "National public school"
+  },
+  "segmentdata": [
+    {
+        "segmentid": "SG001",
+        "segmentname": "Speed and distance",
+        "studentappeared": 60,
+        "studentcleared": 42,
+        "studentfailed": 18,
+        "studentclearedperc": 70
+      },
+      
+      {
+        "segmentid": "SG002",
+        "segmentname": "Simple interest",
+        "studentappeared": 60,
+        "studentcleared": 36,
+        "studentfailed": 24,
+        "studentclearedperc": 60
+      },
+      
+      {
+        "segmentid": "SG003",
+        "segmentname": "Fractions",
+        "studentappeared": 60,
+        "studentcleared": 50,
+        "studentfailed":10,
+        "studentclearedperc": 83.2
+      }
+  ]
+}

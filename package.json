@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@amcharts/amcharts4": "^4.8.8",
+    "@amcharts/amcharts4": "^4.9.1",
     "@angular/animations": "^8.2.14",
     "@angular/cdk": "^8.2.3",
     "@angular/common": "~8.2.0",
@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "~8.2.0",
     "@angular/router": "~8.2.0",
     "jquery": "^3.4.1",
+    "ng2-izitoast": "^2.0.0",
     "ng2-semantic-ui": "^0.9.7",
     "primeicons": "^2.0.0",
     "primeng": "^9.0.0-rc.4",

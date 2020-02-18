@@ -1,9 +1,10 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { ReportServiceService } from 'src/app/services/report-service.service';
+import { ReportService } from 'src/app/services/report-service.service';
 import * as _ from 'lodash';
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import { Ng2IzitoastService } from 'ng2-izitoast';
 am4core.useTheme(am4themes_animated);
 @Component({
   selector: 'app-reports-component',
@@ -17,6 +18,7 @@ export class ReportsComponentComponent implements OnInit {
   examList: any;
   studentList: any;
   segmentList: any;
+  recommendationArray: any;
   displaySegment: boolean = false;
   studentTableColumns: { field: string; header: string; }[];
   resultTableColumns: { field: string; header: string; }[];
@@ -27,14 +29,15 @@ export class ReportsComponentComponent implements OnInit {
   selectedSegment: object;
   selectedExam: any;
   displayAnswer: boolean = false;
-  constructor(private reportServiceService: ReportServiceService, private zone: NgZone) { }
+  constructor(private reportService: ReportService, private zone: NgZone, public iziToast: Ng2IzitoastService) { }
   ngOnInit() {
-    this.reportServiceService.getExamList('admin').subscribe(response => {
+    this.getRecommendationData();
+    this.reportService.getExamList('admin').subscribe(response => {
       this.examList = response.data;
       if (_.isEmpty(this.selectedExam)) {
         this.selectedExam = this.examList[0];
       }
-      this.reportServiceService.getStudentList(this.loggedUser, _.get(this.selectedExam, 'examid')).subscribe(response => {
+      this.reportService.getStudentList(this.loggedUser, _.get(this.selectedExam, 'examid')).subscribe(response => {
         this.studentList = response;
         this.initializeTables();
       });
@@ -56,6 +59,11 @@ export class ReportsComponentComponent implements OnInit {
         color: "#ffca28"
       }
     ]
+  }
+  getRecommendationData() {
+    this.reportService.getJSON('./assets/json/devcon/schoolRecommendation.json').subscribe(response => {
+      this.recommendationArray = response;
+    });
   }
   initializeTables() {
     this.studentTableColumns = [
@@ -87,7 +95,8 @@ export class ReportsComponentComponent implements OnInit {
       { field: 'passingmarks', header: 'Passing Mark (%)' },
       { field: 'marksobtainedpercentage', header: 'Scored (%)' },
       { field: 'outcome', header: 'Result' },
-      { field: '', header: 'Option' }
+      { field: '', header: 'Option' },
+      { field: '', header: 'Action' }
     ]
     this.answerTableColumns = [
       { field: 'questionno', header: 'Question No' },
@@ -99,7 +108,7 @@ export class ReportsComponentComponent implements OnInit {
   }
   showSegment(selectedStudent) {
     this.selectedStudent = selectedStudent;
-    this.reportServiceService.getSegmentList(this.loggedUser, _.get(this.selectedExam, 'examid'), _.get(this.selectedStudent, 'studentid')).subscribe(response => {
+    this.reportService.getSegmentList(this.loggedUser, _.get(this.selectedExam, 'examid'), _.get(this.selectedStudent, 'studentid')).subscribe(response => {
       this.segmentList = response;
       this.displaySegment = true;
       this.buildPieChartData();
@@ -115,6 +124,28 @@ export class ReportsComponentComponent implements OnInit {
     setTimeout(function () {
       self.showChart();
     }, 1);
+  }
+  getSegmentDetails(segment) {
+    let redirectUrl = '';
+    this.iziToast.settings({
+      position: 'topCenter',
+      titleSize: '18',
+      timeout: 2000,
+      close: false,
+      transitionIn: 'flipInX',
+      transitionOut: 'flipOutX',
+      onClosed: function () {
+        window.open(redirectUrl, '_blank');
+      }
+    });
+    let recommendation = _.find(_.get(this.recommendationArray, 'segmentdata'), { segmentname: segment.name });
+    (segment.marksobtainedpercentage >= recommendation.studentclearperc[0].operator1Valperc && segment.marksobtainedpercentage <= recommendation.studentclearperc[0].operator2Valperc) ?
+      (this.iziToast.error({ title: recommendation.studentclearperc[0].msg }), redirectUrl = recommendation.studentclearperc[0].recommendation)
+      : (segment.marksobtainedpercentage >= recommendation.studentclearperc[1].operator1Valperc && segment.marksobtainedpercentage <= recommendation.studentclearperc[1].operator2Valperc) ?
+        (this.iziToast.warning({ title: recommendation.studentclearperc[1].msg }), redirectUrl = recommendation.studentclearperc[1].recommendation)
+        : (segment.marksobtainedpercentage >= recommendation.studentclearperc[2].operator1Valperc && segment.marksobtainedpercentage <= recommendation.studentclearperc[2].operator2Valperc) ?
+          (this.iziToast.success({ title: recommendation.studentclearperc[2].msg }), redirectUrl = recommendation.studentclearperc[2].recommendation)
+          : (this.iziToast.success({ title: recommendation.studentclearperc[3].msg }), redirectUrl = recommendation.studentclearperc[3].recommendation)
   }
   showChart() {
     let chartData = [];

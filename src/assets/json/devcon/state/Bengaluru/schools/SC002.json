@@ -1,0 +1,38 @@
+{
+  "result": {
+    "status": "Success"
+  },
+  "schooldata": {
+    "examid": "E0001",
+    "schoolid": "SC002",
+    "schoolname": "Kendriya Vidyalaya"
+  },
+  "segmentdata": [
+    {
+        "segmentid": "SG001",
+        "segmentname": "Speed and distance",
+        "studentappeared": 100,
+        "studentcleared": 70,
+        "studentfailed": 30,
+        "studentclearedperc": 70
+      },
+      
+      {
+        "segmentid": "SG002",
+        "segmentname": "Simple interest",
+        "studentappeared": 100,
+        "studentcleared": 82,
+        "studentfailed": 18,
+        "studentclearedperc": 82
+      },
+      
+      {
+        "segmentid": "SG003",
+        "segmentname": "Fractions",
+        "studentappeared": 100,
+        "studentcleared": 57,
+        "studentfailed":43,
+        "studentclearedperc": 57
+      }
+  ]
+}

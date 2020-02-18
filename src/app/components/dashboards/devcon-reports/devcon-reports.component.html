@@ -1,0 +1,99 @@
+<div class="reports-container">
+    <div class="twelve wide column mb-20" *ngIf="currentReport === 1">
+        <h4>State wise details</h4>
+        <p-table [columns]="stateWiseTableColumns" [value]="stateWiseData">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr>
+                    <td *ngFor="let col of columns">
+                        <span *ngIf="col.header!=='Options'">{{rowData[col.field]}}</span>
+                        <button *ngIf="col.header==='Options'" class="mini ui blue button"
+                            (click)="getDistrictWiseData()">View</button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <div class="twelve wide column mb-20" *ngIf="currentReport === 2">
+        <h4>District wise details for Karnataka</h4>
+        <button class="mini ui default button pull-right" (click)="currentReport = currentReport - 1"
+            style="margin-top: -40px;">
+            <i class="arrow circle left icon"></i>Back</button>
+        <p-table [columns]="districtWiseTableColumns" [value]="districtWiseData">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr>
+                    <td *ngFor="let col of columns">
+                        <span *ngIf="col.header!=='Options'">{{rowData[col.field]}}</span>
+                        <button *ngIf="col.header==='Options'" class="mini ui blue button"
+                            (click)="getDistrictWiseSchoolList(rowData?.distname)">View</button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <div class="twelve wide column mb-20" *ngIf="currentReport === 3">
+        <h4>School list in {{selectedDistrict}}</h4>
+        <button class="mini ui default button pull-right" (click)="currentReport = currentReport - 1"
+            style="margin-top: -40px;">
+            <i class="arrow circle left icon"></i>Back</button>
+        <p-table [columns]="districtWiseSchoolListTableColumns" [value]="districtWiseSchoolList?.schooldata">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr>
+                    <td *ngFor="let col of columns">
+                        <span *ngIf="col.header!=='Options'">{{rowData[col.field]}}</span>
+                        <button *ngIf="col.header==='Options'" class="mini ui blue button"
+                            (click)="getSchoolList(districtWiseSchoolList?.distdata?.distname,rowData)">View</button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <div class="twelve wide column mb-20" *ngIf="currentReport === 4">
+        <h4>Exam details for {{selectedSchool}}</h4>
+        <button class="mini ui default button pull-right" (click)="currentReport = currentReport - 1"
+            style="margin-top: -40px;">
+            <i class="arrow circle left icon"></i>Back</button>
+        <p-table [columns]="schoolListTableColumns" [value]="schoolList?.segmentdata">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr>
+                    <td *ngFor="let col of columns" class="text-center">
+                        <span
+                            *ngIf="col.field!=='studentclearedperc' && col.header!=='Options'">{{rowData[col.field]}}</span>
+                        <span
+                            *ngIf="col.field==='studentclearedperc' && col.header!=='Options'">{{rowData[col.field]}}%</span>
+                        <span *ngIf="col.header==='Options'" style="cursor: pointer;" title="Recommendation"
+                            (click)="getSegmentDetails(rowData)"><i
+                                class="large blue external square alternate icon"></i></span>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

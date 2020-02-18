@@ -1,0 +1,36 @@
+{
+  "result": {
+    "status": "Success"
+  },
+  "schooldata": {
+    "examid": "E0001",
+    "schoolid": "SC001",
+    "schoolname": "Frank Anthony"
+  },
+  "segmentdata": [
+    {
+      "segmentid": "SG001",
+      "segmentname": "Speed and distance",
+      "studentappeared": 70,
+      "studentcleared": 30,
+      "studentfailed": 4,
+      "studentclearedperc": 42.5
+    },
+    {
+      "segmentid": "SG002",
+      "segmentname": "Simple interest",
+      "studentappeared": 70,
+      "studentcleared": 56,
+      "studentfailed": 14,
+      "studentclearedperc": 80
+    },
+    {
+      "segmentid": "SG003",
+      "segmentname": "Fractions",
+      "studentappeared": 70,
+      "studentcleared": 70,
+      "studentfailed": 0,
+      "studentclearedperc": 100
+    }
+  ]
+}

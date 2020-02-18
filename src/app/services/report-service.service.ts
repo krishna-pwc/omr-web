@@ -4,9 +4,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ReportServiceService {
+export class ReportService {
   baseUrl: string = "http://52.172.51.143:5000";
   constructor(private http: HttpClient) {
+  }
+  public getJSON(path): Observable<any> {
+    return this.http.get(path);
   }
   public getExamList(userId): Observable<any> {
     return this.http.get(`${this.baseUrl}/v1/omr/examitem?userid=${userId}`);

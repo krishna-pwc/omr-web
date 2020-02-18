@@ -1,0 +1,38 @@
+{
+  "result": {
+    "status": "Success"
+  },
+  "schooldata": {
+    "examid": "E0001",
+    "schoolid": "SC004",
+    "schoolname": "South Point"
+  },
+  "segmentdata": [
+    {
+        "segmentid": "SG001",
+        "segmentname": "Speed and distance",
+        "studentappeared": 50,
+        "studentcleared": 30,
+        "studentfailed": 20,
+        "studentclearedperc": 60
+      },
+      
+      {
+        "segmentid": "SG002",
+        "segmentname": "Simple interest",
+        "studentappeared": 50,
+        "studentcleared": 40,
+        "studentfailed": 10,
+        "studentclearedperc": 80
+      },
+      
+      {
+        "segmentid": "SG003",
+        "segmentname": "Fractions",
+        "studentappeared": 50,
+        "studentcleared": 25,
+        "studentfailed": 25,
+        "studentclearedperc": 50
+      }
+  ]
+}

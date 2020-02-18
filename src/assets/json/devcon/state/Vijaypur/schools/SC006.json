@@ -1,0 +1,38 @@
+{
+  "result": {
+    "status": "Success"
+  },
+  "schooldata": {
+    "examid": "E0001",
+    "schoolid": "SC006",
+    "schoolname": "New Horizon Public School"
+  },
+  "segmentdata": [
+    {
+        "segmentid": "SG001",
+        "segmentname": "Speed and distance",
+        "studentappeared": 50,
+        "studentcleared": 30,
+        "studentfailed": 20,
+        "studentclearedperc": 60
+      },
+      
+      {
+        "segmentid": "SG002",
+        "segmentname": "Simple interest",
+        "studentappeared": 50,
+        "studentcleared": 20,
+        "studentfailed": 30,
+        "studentclearedperc": 40
+      },
+      
+      {
+        "segmentid": "SG003",
+        "segmentname": "Fractions",
+        "studentappeared": 50,
+        "studentcleared": 40,
+        "studentfailed":10,
+        "studentclearedperc": 80
+      }
+  ]
+}

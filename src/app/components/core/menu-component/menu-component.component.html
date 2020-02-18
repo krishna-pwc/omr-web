@@ -2,9 +2,8 @@
 <div class="ui container">
   <div class="ui large top fixed pointing menu">
     <div class="ui container">
-      <a href="/" class="active item">Home</a>
-      <a class="item">Menu 1</a>
-      <a class="item">Menu 2</a>
+      <a [routerLink]="'/home'" class="item" [class.active]="router.isActive('/home',true)">Home</a>
+      <a [routerLink]="'reports'" class="item" [class.active]="router.isActive('/reports',true)">Reports</a>
     </div>
   </div>
 </div>

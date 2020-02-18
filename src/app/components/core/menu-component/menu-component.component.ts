@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-component',
@@ -6,10 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu-component.component.scss']
 })
 export class MenuComponentComponent implements OnInit {
-
-  constructor() { }
-
+  constructor(private router: Router) { }
   ngOnInit() {
   }
-
 }

@@ -9,12 +9,15 @@ import { ReportsComponentComponent } from './components/dashboards/reports-compo
 import { SuiModule } from 'ng2-semantic-ui';
 import { TableModule } from 'primeng/table';
 import { FormsModule } from '@angular/forms';
+import { DevconReportsComponent } from './components/dashboards/devcon-reports/devcon-reports.component';
+import { Ng2IziToastModule } from 'ng2-izitoast';
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponentComponent,
     FooterComponentComponent,
-    ReportsComponentComponent
+    ReportsComponentComponent,
+    DevconReportsComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     SuiModule,
     HttpClientModule,
-    TableModule
+    TableModule,
+    Ng2IziToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]

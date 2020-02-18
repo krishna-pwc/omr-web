@@ -81,7 +81,7 @@
                     </div>
                 </div>
             </div>
-            <p-table [columns]="resultTableColumns" [value]="studentList?.studentdata">
+            <p-table [columns]="resultTableColumns" [value]="studentList?.studentdata" [paginator]="true" [rows]="7">
                 <ng-template pTemplate="header" let-columns let-index>
                     <tr>
                         <th *ngFor="let col of columns">
@@ -139,6 +139,10 @@
                                 [ngClass]="rowData[col.field] === 'Fail' ? 'red':'green'">{{rowData[col.field]}}</a>
                             <button *ngIf="col.header==='Option'" class="mini ui blue button"
                                 (click)="showAnswer('single',rowIndex)"><i class="chart pie icon"></i>View</button>
+                            <span *ngIf="col.header==='Action'" style="cursor: pointer;" title="Recommendation"
+                                (click)="getSegmentDetails(rowData)">
+                                <i class="large blue external square alternate icon"></i>
+                            </span>
                         </td>
                     </tr>
                 </ng-template>
@@ -173,7 +177,7 @@
                         class="arrow circle left icon"></i>Back</button>
             </div>
             <div class="twelve wide column mt-15">
-                <p-table [columns]="answerTableColumns" [value]="segment?.answers">
+                <p-table [columns]="answerTableColumns" [value]="segment?.answers" [paginator]="true" [rows]="7">
                     <ng-template pTemplate="header" let-columns>
                         <tr>
                             <th *ngFor="let col of columns">

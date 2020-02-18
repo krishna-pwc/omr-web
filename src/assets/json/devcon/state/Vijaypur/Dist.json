@@ -1,0 +1,21 @@
+{
+        "result": {
+                "status": "Success"
+        },
+        "distdata": {
+                "examid": "E0001",
+                "distid": "DS003",
+                "distname": "Vijaypur",
+                "studentappeared": 150,
+                "studentcleared": 80,
+                "studentfailed": 70,
+                "studentclearedperc": "53.3%",
+                "studentfailedperc": "46.7%",
+                "firstdiv": 35,
+                "firstdivperc": "43.75%",
+                "seconddiv": 25,
+                "seconddivperc": "31.25%",
+                "thirddiv": 20,
+                "thirddivperc": "25%"
+        }
+}

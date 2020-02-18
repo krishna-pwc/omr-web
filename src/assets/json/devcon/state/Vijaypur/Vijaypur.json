@@ -1,0 +1,35 @@
+{
+  "result": {
+    "status": "Success"
+  },
+  "distdata": {
+    "examid": "E0001",
+    "distid": "DS003",
+    "distname": "Vijaypur"
+  },
+  "schooldata": [
+    {
+        "schoolid": "SC006",
+        "schoolname": "New Horizon Public School",
+        "studentappeared": 50,
+        "studentcleared": 35,
+        "studentfailed": 15,
+        "studentclearedperc": 70,
+        "firstdiv":25,
+        "seconddiv":5,
+        "thirddiv":5
+      },
+      
+      {
+        "schoolid": "SC007",
+        "schoolname": "Vijapur Public School",
+        "studentappeared": 100,
+        "studentcleared": 45,
+        "studentfailed": 55,
+        "studentclearedperc": 45,
+        "firstdiv":10,
+        "seconddiv":20,
+        "thirddiv":15
+      }
+  ]
+}

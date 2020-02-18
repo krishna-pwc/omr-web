@@ -1,0 +1,136 @@
+{
+  "result": {
+    "status": "Success"
+  },
+  "examdata": {
+    "examid": "E0001"
+  },
+  "segmentdata": [
+    {
+      "segmentid": "SG001",
+      "segmentname": "Speed and distance",
+      "studentclearperc": [
+        {
+          "operator1": ">=",
+          "operator1Valperc": 0,
+          "operator2": "<=",
+          "mode": "&&",
+          "operator2Valperc": 40,
+          "recommendation": "https://mahacyber.ddns.net/search/Library/1?key=speed&nlpSearch=false&medium=Basic&appliedFilters=true",
+          "msg": "Please Go through the Basic course as suggested"
+        },
+        {
+          "operator1": ">=",
+          "operator1Valperc": 41,
+          "operator2": "<=",
+          "mode": "&&",
+          "operator2Valperc": 75,
+          "recommendation": "https://mahacyber.ddns.net/search/Library/1?key=speed&nlpSearch=false&medium=Intermediate&appliedFilters=true",
+          "msg": "Good in basics. Please Go through the intermediate course as suggested"
+        },
+        {
+          "operator1": ">=",
+          "operator1Valperc": 76,
+          "operator2": "<=",
+          "mode": "&&",
+          "operator2Valperc": 90,
+          "msg": "Well done!! Please go through Advance course as recommended",
+          "recommendation": "https://mahacyber.ddns.net/search/Library/1?key=speed&medium=Advanced&appliedFilters=true"
+        },
+        {
+          "operator1": ">=",
+          "operator1Valperc": 91,
+          "operator2": "<=",
+          "mode": "&&",
+          "operator2Valperc": 100,
+          "msg": "Bravo!!!! You can move to more advanced course as suggested to enhance your knowledge",
+          "recommendation": "https://mahacyber.ddns.net/search/Library/1?key=speed&medium=Advanced&appliedFilters=true"
+        }
+      ]
+    },
+    {
+      "segmentid": "SG002",
+      "segmentname": "Simple interest",
+      "studentclearperc": [
+        {
+          "operator1": ">=",
+          "operator1Valperc": 0,
+          "operator2": "<=",
+          "mode": "&&",
+          "operator2Valperc": 40,
+          "recommendation": "https://mahacyber.ddns.net/search/Library/1?key=interest&nlpSearch=false&medium=Basic&appliedFilters=true",
+          "msg": "Please Go through the Bsic course as suggested"
+        },
+        {
+          "operator1": ">=",
+          "operator1Valperc": 41,
+          "operator2": "<=",
+          "mode": "&&",
+          "operator2Valperc": 75,
+          "msg": "Good in basics. Please Go through the intermediate course as suggested",
+          "recommendation": "https://mahacyber.ddns.net/search/Library/1?key=interest&medium=Intermediate&appliedFilters=true"
+        },
+        {
+          "operator1": ">=",
+          "operator1Valperc": 76,
+          "operator2": "<=",
+          "mode": "&&",
+          "operator2Valperc": 90,
+          "msg": "Well done!! Please go through Advance course as recommended",
+          "recommendation": "https://mahacyber.ddns.net/search/Library/1?key=interest&medium=Advanced&appliedFilters=true"
+        },
+        {
+          "operator1": ">=",
+          "operator1Valperc": 91,
+          "operator2": "<=",
+          "mode": "&&",
+          "operator2Valperc": 100,
+          "msg": "Bravo!!!! You can move to more advanced course as suggested to enhance your knowledge",
+          "recommendation": "https://mahacyber.ddns.net/search/Library/1?key=interest&medium=Advanced&appliedFilters=true"
+        }
+      ]
+    },
+    {
+      "segmentid": "SG003",
+      "segmentname": "Fractions",
+      "studentclearperc": [
+        {
+          "operator1": ">=",
+          "operator1Valperc": 0,
+          "operator2": "<=",
+          "mode": "&&",
+          "operator2Valperc": 40,
+          "recommendation": "https://mahacyber.ddns.net/search/Library/1?key=fraction&nlpSearch=false&medium=Basic&appliedFilters=true",
+          "msg": "Please Go through the Bsic course as suggested"
+        },
+        {
+          "operator1": ">=",
+          "operator1Valperc": 41,
+          "operator2": "<=",
+          "mode": "&&",
+          "operator2Valperc": 75,
+          "msg": "Good in basics. Please Go through the intermediate course as suggested",
+          "recommendation": "https://mahacyber.ddns.net/search/Library/1?key=fraction&medium=Intermediate&appliedFilters=true"
+        },
+        {
+          "operator1": ">=",
+          "operator1Valperc": 76,
+          "operator2": "<=",
+          "mode": "&&",
+          "operator2Valperc": 90,
+          "msg": "Well done!! Please go through advance course as recommended",
+          "recommendation": "https://mahacyber.ddns.net/search/Library/1?key=fraction&medium=Advanced&appliedFilters=true"
+        },
+        {
+          "operator1": ">=",
+          "operator1Valperc": 91,
+          "operator2": "<=",
+          "mode": "&&",
+          "operator2Valperc": 100,
+          "msg": "Bravo!!!! You can move to more advanced course as suggested to enhance your knowledge",
+          "recommendation": "https://mahacyber.ddns.net/search/Library/1?key=fraction&medium=Advanced&appliedFilters=true"
+        }
+      ]
+    }
+  ]
+}

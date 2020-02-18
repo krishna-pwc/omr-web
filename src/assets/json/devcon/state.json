@@ -1,0 +1,23 @@
+{
+        "result": {
+                "status": "Success"
+        },
+        "statedata": [
+                {
+                        "examid": "E0001",
+                        "stateid": "ST001",
+                        "distname": "Karnataka",
+                        "studentappeared": 530,
+                        "studentcleared": 346,
+                        "studentfailed": 184,
+                        "studentclearedperc": "65.2%",
+                        "studentfailedperc": "34.8%",
+                        "firstdiv": 205,
+                        "firstdivperc": "59.2%",
+                        "seconddiv": 85,
+                        "seconddivperc": "24.6%",
+                        "thirddiv": 56,
+                        "thirddivperc": "16.2%"
+                }
+        ]
+}

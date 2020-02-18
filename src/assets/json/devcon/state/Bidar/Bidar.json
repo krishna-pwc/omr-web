@@ -1,0 +1,35 @@
+{
+  "result": {
+    "status": "Success"
+  },
+  "distdata": {
+    "examid": "E0001",
+    "distid": "DS002",
+    "distname": "BIdar"
+  },
+  "schooldata": [
+    {
+        "schoolid": "SC004",
+        "schoolname": "South Point",
+        "studentappeared": 50,
+        "studentcleared": 40,
+        "studentfailed": 10,
+        "studentclearedperc": 80,
+        "firstdiv":25,
+        "seconddiv":10,
+        "thirddiv":5
+      },
+      
+      {
+        "schoolid": "SC005",
+        "schoolname": "GHVMC",
+        "studentappeared": 100,
+        "studentcleared": 72,
+        "studentfailed": 28,
+        "studentclearedperc": 72,
+        "firstdiv":60,
+        "seconddiv":5,
+        "thirddiv":7
+      }
+  ]
+}

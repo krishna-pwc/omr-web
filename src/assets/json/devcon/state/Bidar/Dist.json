@@ -1,0 +1,21 @@
+{
+        "result": {
+                "status": "Success"
+        },
+        "distdata": {
+                "examid": "E0001",
+                "distid": "DS002",
+                "distname": "Bidar",
+                "studentappeared": 150,
+                "studentcleared": 112,
+                "studentfailed": 38,
+                "studentclearedperc": "74.6%",
+                "studentfailedperc": "26.4%",
+                "firstdiv": 85,
+                "firstdivperc": "75.9%",
+                "seconddiv": 15,
+                "seconddivperc": "13.4%",
+                "thirddiv": 12,
+                "thirddivperc": "10.7%"
+        }
+}
