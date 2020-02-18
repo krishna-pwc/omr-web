@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~8.2.0",
     "@angular/platform-browser-dynamic": "~8.2.0",
     "@angular/router": "~8.2.0",
+    "chart.js": "^2.9.3",
     "jquery": "^3.4.1",
     "ng2-izitoast": "^2.0.0",
     "ng2-semantic-ui": "^0.9.7",

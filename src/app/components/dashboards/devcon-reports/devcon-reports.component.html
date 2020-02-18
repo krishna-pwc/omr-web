@@ -18,11 +18,22 @@
                     </td>
                 </tr>
             </ng-template>
-        </p-table>
+        </p-table><br>
+        <div class="ui grid">
+            <div class="eight wide column">
+                <h4>Statewise Summary</h4>
+                <div id="statewiseSummaryPieChart" style="width:100%;height: 300px;"></div>
+            </div>
+            <div class="eight wide column">
+                <h4>&nbsp;</h4>
+                <div id="statewiseSummaryStackedBarChart" style="width:100%;height: 300px;"></div>
+            </div>
+        </div>
     </div>
     <div class="twelve wide column mb-20" *ngIf="currentReport === 2">
         <h4>District wise details for Karnataka</h4>
-        <button class="mini ui default button pull-right" (click)="currentReport = currentReport - 1"
+        <button class="mini ui default button pull-right"
+            (click)="currentReport = currentReport - 1;getStateWisePieChart();getStateWiseStackedBarChart();"
             style="margin-top: -40px;">
             <i class="arrow circle left icon"></i>Back</button>
         <p-table [columns]="districtWiseTableColumns" [value]="districtWiseData">
@@ -38,16 +49,26 @@
                     <td *ngFor="let col of columns">
                         <span *ngIf="col.header!=='Options'">{{rowData[col.field]}}</span>
                         <button *ngIf="col.header==='Options'" class="mini ui blue button"
-                            (click)="getDistrictWiseSchoolList(rowData?.distname)">View</button>
+                            (click)="getDistrictWiseSchoolList(rowData)">View</button>
                     </td>
                 </tr>
             </ng-template>
-        </p-table>
+        </p-table><br>
+        <div class="ui grid">
+            <div class="eight wide column">
+                <h4>Districtwise Summary</h4>
+                <div id="disctrictwiseSummaryPieChart" style="width:100%;height: 300px;"></div>
+            </div>
+            <div class="eight wide column">
+                <h4>&nbsp;</h4>
+                <div id="disctrictwiseSummaryStackedBarChart" style="width:100%;height: 300px;"></div>
+            </div>
+        </div>
     </div>
     <div class="twelve wide column mb-20" *ngIf="currentReport === 3">
-        <h4>School list in {{selectedDistrict}}</h4>
-        <button class="mini ui default button pull-right" (click)="currentReport = currentReport - 1"
-            style="margin-top: -40px;">
+        <h4>School list in {{selectedDistrict?.distname}}</h4>
+        <button class="mini ui default button pull-right"
+            (click)="currentReport = currentReport - 1;getDistrictWiseChartDetails();" style="margin-top: -40px;">
             <i class="arrow circle left icon"></i>Back</button>
         <p-table [columns]="districtWiseSchoolListTableColumns" [value]="districtWiseSchoolList?.schooldata">
             <ng-template pTemplate="header" let-columns>
@@ -66,12 +87,22 @@
                     </td>
                 </tr>
             </ng-template>
-        </p-table>
+        </p-table><br>
+        <div class="ui grid">
+            <div class="eight wide column">
+                <h4>Schoolwise Summary</h4>
+                <div id="schoolwiseSummaryBarChart" style="width:100%;height: 500px;"></div>
+            </div>
+            <div class="eight wide column">
+                <h4>&nbsp;</h4>
+                <div id="schoolwiseSummaryStackedBarChart" style="width:100%;height: 500px;"></div>
+            </div>
+        </div>
     </div>
     <div class="twelve wide column mb-20" *ngIf="currentReport === 4">
-        <h4>Exam details for {{selectedSchool}}</h4>
-        <button class="mini ui default button pull-right" (click)="currentReport = currentReport - 1"
-            style="margin-top: -40px;">
+        <h4>Exam details for {{selectedSchool?.schoolname}}</h4>
+        <button class="mini ui default button pull-right"
+            (click)="currentReport = currentReport - 1;getSchoolWiseChartDetails();" style="margin-top: -40px;">
             <i class="arrow circle left icon"></i>Back</button>
         <p-table [columns]="schoolListTableColumns" [value]="schoolList?.segmentdata">
             <ng-template pTemplate="header" let-columns>
@@ -94,6 +125,12 @@
                     </td>
                 </tr>
             </ng-template>
-        </p-table>
+        </p-table><br>
+        <div class="ui grid">
+            <div class="sixteen wide column">
+                <h4>Segmentwise Summary</h4>
+                <div id="segmentwiseSummaryPieChart" style="width:100%;height: 500px;"></div>
+            </div>
+        </div>
     </div>
 </div>

@@ -11,11 +11,11 @@
                 "studentfailed": 38,
                 "studentclearedperc": "74.6%",
                 "studentfailedperc": "26.4%",
-                "firstdiv": 85,
+                "firstdiv": 50,
                 "firstdivperc": "75.9%",
-                "seconddiv": 15,
+                "seconddiv": 25,
                 "seconddivperc": "13.4%",
-                "thirddiv": 12,
+                "thirddiv": 20,
                 "thirddivperc": "10.7%"
         }
 }
