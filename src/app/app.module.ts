@@ -11,13 +11,15 @@ import { TableModule } from 'primeng/table';
 import { FormsModule } from '@angular/forms';
 import { DevconReportsComponent } from './components/dashboards/devcon-reports/devcon-reports.component';
 import { Ng2IziToastModule } from 'ng2-izitoast';
+import { LoginComponent } from './components/core/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponentComponent,
     FooterComponentComponent,
     ReportsComponentComponent,
-    DevconReportsComponent
+    DevconReportsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

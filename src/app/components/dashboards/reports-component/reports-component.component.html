@@ -2,7 +2,8 @@
     <div class="twelve wide column mb-20">
         <div class="ui grid">
             <div class="four wide column">
-                <sui-select class="selection" [(ngModel)]="selectedExam" (ngModelChange)="ngOnInit()" labelField="title"
+                <sui-select class="selection" [(ngModel)]="selectedExam"
+                    (ngModelChange)="ngOnInit();displaySegment=false;displayAnswer=false;" labelField="title"
                     placeholder="Select Exam" [isSearchable]="searchable" #examListDropDown>
                     <sui-select-option *ngFor="let examData of examList" [value]="examData">
                     </sui-select-option>

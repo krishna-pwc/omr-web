@@ -14,7 +14,7 @@ am4core.useTheme(am4themes_animated);
 export class ReportsComponentComponent implements OnInit {
   private chart: am4charts.XYChart;
   currentTab: string = 'tab1';
-  loggedUser: string = 'admin';
+  loggedUser: string;
   examList: any;
   studentList: any;
   segmentList: any;
@@ -31,8 +31,9 @@ export class ReportsComponentComponent implements OnInit {
   displayAnswer: boolean = false;
   constructor(private reportService: ReportService, private zone: NgZone, public iziToast: Ng2IzitoastService) { }
   ngOnInit() {
+    this.loggedUser = localStorage.getItem('currentUser');
     this.getRecommendationData();
-    this.reportService.getExamList('admin').subscribe(response => {
+    this.reportService.getExamList(this.loggedUser).subscribe(response => {
       this.examList = response.data;
       if (_.isEmpty(this.selectedExam)) {
         this.selectedExam = this.examList[0];
@@ -138,7 +139,7 @@ export class ReportsComponentComponent implements OnInit {
         window.open(redirectUrl, '_blank');
       }
     });
-    let recommendation = _.find(_.get(this.recommendationArray, 'segmentdata'), { segmentname: segment.name });
+    let recommendation = _.find(_.get(this.recommendationArray, 'segmentdata'), { segmentname: _.trim(segment.name) });
     (segment.marksobtainedpercentage >= recommendation.studentclearperc[0].operator1Valperc && segment.marksobtainedpercentage <= recommendation.studentclearperc[0].operator2Valperc) ?
       (this.iziToast.error({ title: recommendation.studentclearperc[0].msg }), redirectUrl = recommendation.studentclearperc[0].recommendation)
       : (segment.marksobtainedpercentage >= recommendation.studentclearperc[1].operator1Valperc && segment.marksobtainedpercentage <= recommendation.studentclearperc[1].operator2Valperc) ?

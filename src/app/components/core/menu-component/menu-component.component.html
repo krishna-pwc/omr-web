@@ -4,6 +4,13 @@
     <div class="ui container">
       <a [routerLink]="'/home'" class="item" [class.active]="router.isActive('/home',true)">Home</a>
       <a [routerLink]="'reports'" class="item" [class.active]="router.isActive('/reports',true)">Reports</a>
+      <div class="right menu">
+        <div class="item">
+          <a class="large ui red circular label" [routerLink]="'login'" title="Logout">
+            <i class="power off icon" style="margin: 0;"></i>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
